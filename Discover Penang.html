@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Discover Penang</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        /* =========================
+           HERO BANNER
+        ========================= */
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 723px;
+            color: white;
+            overflow: hidden;
+        }
+
+        .container > img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+
+
+        /* =========================
+           NAVIGATION BAR
+        ========================= */
+
+        .topnav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 60px;
+
+            display: flex;
+            align-items: center;
+            gap: 24px;
+
+            padding: 8px 35px;
+
+            background: rgba(0, 0, 0, 0.38);
+            z-index: 3;
+        }
+
+
+        /* Logo */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .logo span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+
+        /* Search bar */
+
+        .search-box {
+            display: flex;
+            align-items: center;
+
+            width: 280px;
+            height: 38px;
+
+            padding: 0 16px;
+
+            background: white;
+            border-radius: 25px;
+        }
+
+        .search-icon {
+            margin-right: 10px;
+            color: #333;
+            font-size: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 15px;
+        }
+
+
+        /* Navigation links */
+
+        .nav-links {
+            margin-left: auto;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            padding: 8px 12px;
+
+            color: white;
+            text-align: center;
+            text-decoration: none;
+
+            font-size: 15px;
+            white-space: nowrap;
+
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .nav-links a.active {
+            background: #04AA6D;
+        }
+
+
+        /* =========================
+           HERO TEXT
+        ========================= */
+
+        .centered {
+            position: absolute;
+            top: 52%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 90%;
+            text-align: center;
+
+            z-index: 2;
+        }
+
+        .centered h1 {
+            margin: 0;
+
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: 6.5rem;
+
+            white-space: nowrap;
+        }
+
+        .centered p {
+            margin-top: 18px;
+            font-size: 22px;
+        }
+
+        .explore-button {
+            display: inline-block;
+
+            margin-top: 15px;
+            padding: 14px 28px;
+
+            color: white;
+            background: #04AA6D;
+
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 17px;
+
+            transition: 0.3s;
+        }
+
+        .explore-button:hover {
+            background: #038c59;
+        }
+
+
+        /* =========================
+           WHY VISIT PENANG
+        ========================= */
+
+        .about-penang {
+            padding: 55px 8% 70px;
+            text-align: center;
+            background: white;
+        }
+
+        .about-penang h2 {
+            margin: 0 0 20px;
+            color: #023b2a;
+            font-size: 35px;
+        }
+
+        .about-introduction {
+            max-width: 900px;
+            margin: 0 auto;
+
+            color: #666;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .highlight-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .highlight-box {
+            width: 280px;
+            padding: 25px;
+
+            background: white;
+
+            border: 1px solid #e5e5e5;
+            border-radius: 15px;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+            transition: 0.3s;
+        }
+
+        .highlight-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .highlight-box img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+
+            display: block;
+            object-fit: cover;
+
+            border-radius: 10px;
+        }
+
+        .highlight-box h3 {
+            margin: 22px 0 12px;
+            color: #111;
+            font-size: 20px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #666;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           POPULAR ATTRACTIONS
+        ========================= */
+
+        .popular-attractions {
+            padding: 75px 8%;
+            text-align: center;
+
+            background: #f7f8f7;
+            border-top: 1px solid #eeeeee;
+        }
+
+        .popular-attractions h2 {
+            margin: 0 0 15px;
+            color: #023b2a;
+            font-size: 36px;
+        }
+
+        .attractions-introduction {
+            max-width: 750px;
+            margin: 0 auto 42px;
+
+            color: #666;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .attraction-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+
+            gap: 30px;
+        }
+
+        .attraction-card {
+            width: 360px;
+            overflow: hidden;
+
+            text-align: left;
+            background: white;
+
+            border: 1px solid #e3e3e3;
+            border-radius: 16px;
+
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+            transition: 0.3s;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.13);
+        }
+
+        .attraction-card img {
+            width: 100%;
+            height: 230px;
+
+            display: block;
+            object-fit: cover;
+        }
+
+        .attraction-content {
+            padding: 24px;
+        }
+
+        .attraction-content h3 {
+            margin: 0 0 12px;
+            color: #023b2a;
+            font-size: 22px;
+        }
+
+        .attraction-content p {
+            margin: 0 0 20px;
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .learn-button {
+            display: inline-block;
+
+            padding: 11px 20px;
+
+            color: white;
+            background: #04AA6D;
+
+            border-radius: 22px;
+            text-decoration: none;
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .learn-button:hover {
+            background: #038c59;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            padding: 45px 8% 25px;
+            background: #023b2a;
+            color: white;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+
+            gap: 35px;
+        }
+
+        .footer-brand {
+            max-width: 360px;
+        }
+
+        .footer-brand h3 {
+            margin: 0 0 12px;
+            font-size: 24px;
+        }
+
+        .footer-brand p {
+            margin: 0;
+            color: #d8e5df;
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            margin: 0 0 14px;
+            font-size: 17px;
+        }
+
+        .footer-links a {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #d8e5df;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 35px;
+            padding-top: 20px;
+
+            text-align: center;
+            color: #d8e5df;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media screen and (max-width: 1100px) {
+
+            .topnav {
+                flex-wrap: wrap;
+                padding: 12px 20px;
+            }
+
+            .search-box {
+                width: 260px;
+            }
+
+            .nav-links {
+                width: 100%;
+                margin-left: 0;
+
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .centered h1 {
+                font-size: 4.5rem;
+            }
+        }
+
+
+        @media screen and (max-width: 650px) {
+
+            .container {
+                height: 650px;
+            }
+
+            .topnav {
+                gap: 12px;
+            }
+
+            .search-box {
+                order: 3;
+                width: 100%;
+            }
+
+            .centered {
+                top: 58%;
+            }
+
+            .centered h1 {
+                font-size: 2.8rem;
+                white-space: normal;
+            }
+
+            .centered p {
+                font-size: 17px;
+            }
+
+            .about-penang,
+            .popular-attractions {
+                padding: 45px 20px 55px;
+            }
+
+            .about-penang h2,
+            .popular-attractions h2 {
+                font-size: 30px;
+            }
+
+            .highlight-box,
+            .attraction-card {
+                width: 100%;
+                max-width: 360px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <!-- HERO SECTION -->
+
+    <div class="container">
+
+        <img src="img1.jpg"
+             alt="Penang heritage buildings">
+
+
+        <div class="topnav">
+
+            <a href="index.html" class="logo">
+
+                <img src="logo_white.png"
+                     alt="Discover Penang logo">
+
+                <span>Discover Penang</span>
+
+            </a>
+
+
+            <div class="search-box">
+
+                <span class="search-icon">⌕</span>
+
+                <input type="text"
+                       placeholder="Search Penang">
+
+            </div>
+
+
+            <div class="nav-links">
+
+				<a href="Discover Penang.html" class="active">Home</a>
+
+				<a href="explore.html">Explore</a>
+
+				<a href="attractions.html">Attractions</a>
+
+				<a href="food.html">Food</a>
+
+				<a href="hotels.html">Hotels</a>
+
+				<a href="transportation.html">Transportation</a>
+
+				<a href="events.html">Events</a>
+
+				<a href="contact.html">Contact</a>
+
+				<a href="feedback.html">Feedback</a>
+
+			
+
+            </div>
+
+        </div>
+
+
+        <div class="centered">
+
+            <h1>Discover Penang</h1>
+
+            <p>
+                Experience the Pearl of the Orient
+            </p>
+
+            <a href="explore.html"
+               class="explore-button">
+                Explore Now
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- WHY VISIT PENANG -->
+
+    <div class="about-penang" id="about">
+
+        <h2>Why Visit Penang?</h2>
+
+        <p class="about-introduction">
+            Known as the Pearl of the Orient, Penang is a UNESCO
+            World Heritage destination celebrated for its rich
+            cultural heritage, world-famous street food,
+            breathtaking landscapes, and unforgettable travel
+            experiences.
+        </p>
+
+
+        <div class="highlight-container">
+
+
+            <div class="highlight-box">
+
+                <img src="heritage.jpg"
+                     alt="Rich Heritage">
+
+                <h3>Rich Heritage</h3>
+
+                <p>
+                    Explore historic buildings, temples
+                    and traditional streets.
+                </p>
+
+            </div>
+
+
+            <div class="highlight-box">
+
+                <img src="cuisine.jpg"
+                     alt="Local Cuisine">
+
+                <h3>Local Cuisine</h3>
+
+                <p>
+                    Taste Penang's famous street food,
+                    from Char Kway Teow to Assam Laksa.
+                </p>
+
+            </div>
+
+
+            <div class="highlight-box">
+
+                <img src="beach.jpg"
+                     alt="Beautiful Beaches">
+
+                <h3>Beautiful Beaches</h3>
+
+                <p>
+                    Relax by the sea and enjoy the
+                    beautiful coastline of Batu Ferringhi.
+                </p>
+
+            </div>
+
+
+            <div class="highlight-box">
+
+                <img src="streetart.jpg"
+                     alt="Street Art">
+
+                <h3>Street Art</h3>
+
+                <p>
+                    Discover colourful murals and
+                    creative art around George Town.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- POPULAR ATTRACTIONS -->
+
+    <div class="popular-attractions">
+
+        <h2>Popular Attractions</h2>
+
+        <p class="attractions-introduction">
+            Explore some of Penang's most famous and memorable
+            destinations, from scenic hilltop views to historic
+            temples and waterfront villages.
+        </p>
+
+
+        <div class="attraction-container">
+
+
+            <div class="attraction-card">
+
+                <img src="penanghill.jpg"
+                     alt="Penang Hill">
+
+                <div class="attraction-content">
+
+                    <h3>Penang Hill</h3>
+
+                    <p>
+                        Enjoy cool weather, beautiful scenery,
+                        and panoramic views of George Town.
+                    </p>
+
+                    <a href="attractions.html"
+                       class="learn-button">
+                        Learn More
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="attraction-card">
+
+                <img src="kekloksi.jpg"
+                     alt="Kek Lok Si Temple">
+
+                <div class="attraction-content">
+
+                    <h3>Kek Lok Si Temple</h3>
+
+                    <p>
+                        Visit one of Southeast Asia's largest
+                        Buddhist temples and admire its architecture.
+                    </p>
+
+                    <a href="attractions.html"
+                       class="learn-button">
+                        Learn More
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="attraction-card">
+
+                <img src="clanjetties.jpg"
+                     alt="Clan Jetties">
+
+                <div class="attraction-content">
+
+                    <h3>Clan Jetties</h3>
+
+                    <p>
+                        Explore traditional waterfront villages
+                        and discover the history of local clans.
+                    </p>
+
+                    <a href="attractions.html"
+                       class="learn-button">
+                        Learn More
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        <footer class="footer">
+
+        <div class="footer-content">
+
+
+            <div class="footer-brand">
+
+                <h3>Discover Penang</h3>
+
+                <p>
+                    Explore Penang's culture, attractions,
+                    local cuisine and unforgettable travel experiences.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Explore</h4>
+
+                <a href="Discover Penang.html">
+                    Home
+                </a>
+
+                <a href="explore.html">
+                    Explore
+                </a>
+
+                <a href="attractions.html">
+                    Attractions
+                </a>
+
+                <a href="food.html">
+                    Food
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Travel</h4>
+
+                <a href="hotels.html">
+                    Hotels
+                </a>
+
+                <a href="transportation.html">
+                    Transportation
+                </a>
+
+                <a href="events.html">
+                    Events
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Support</h4>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="feedback.html">
+                    Feedback
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            © 2026 Discover Penang. All rights reserved.
+        </div>
+
+    </footer>
+
+    </div>
+
+
+</body>
+</html>

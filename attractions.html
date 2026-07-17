@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Discover Penang</title>
+
+    <style>
+
+        /* =========================
+           GLOBAL STYLE
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: #222;
+            background: #f7f8f7;
+        }
+
+
+        /* =========================
+           ATTRACTIONS HERO
+        ========================= */
+
+        .attractions-hero {
+            position: relative;
+            width: 100%;
+            height: 400px;
+
+            color: white;
+            overflow: hidden;
+        }
+
+        .attractions-hero > img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+            object-fit: cover;
+        }
+
+        .attractions-hero::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.48);
+
+            z-index: 1;
+        }
+
+
+        /* =========================
+           STANDARD NAVIGATION BAR
+        ========================= */
+
+        .topnav {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            min-height: 60px;
+
+            display: flex;
+            align-items: center;
+            gap: 24px;
+
+            padding: 8px 35px;
+
+            background: rgba(0, 0, 0, 0.38);
+
+            z-index: 3;
+        }
+
+
+        /* Logo */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo img {
+            width: 36px;
+            height: 36px;
+
+            object-fit: contain;
+        }
+
+        .logo span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+
+        /* Search Bar */
+
+        .search-box {
+            width: 280px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 16px;
+
+            background: white;
+            border-radius: 25px;
+        }
+
+        .search-icon {
+            margin-right: 10px;
+
+            color: #333;
+            font-size: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+            font-size: 15px;
+        }
+
+
+        /* Navigation Links */
+
+        .nav-links {
+            margin-left: auto;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            padding: 8px 12px;
+
+            color: white;
+
+            text-align: center;
+            text-decoration: none;
+
+            font-size: 15px;
+            white-space: nowrap;
+
+            border-radius: 5px;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .nav-links a.active {
+            background: #04AA6D;
+        }
+
+
+        /* =========================
+           HERO CONTENT
+        ========================= */
+
+        .hero-content {
+            position: absolute;
+
+            top: 56%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 90%;
+            max-width: 850px;
+
+            text-align: center;
+
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            margin: 0 0 15px;
+
+            font-family: Georgia, serif;
+            font-size: 53px;
+        }
+
+        .hero-content p {
+            max-width: 720px;
+
+            margin: 0 auto;
+
+            font-size: 19px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           INTRODUCTION SECTION
+        ========================= */
+
+        .attractions-intro {
+            padding: 65px 8% 45px;
+
+            text-align: center;
+            background: white;
+        }
+
+        .section-title {
+            margin: 0 0 14px;
+
+            color: #023b2a;
+            font-size: 36px;
+        }
+
+        .section-introduction {
+            max-width: 780px;
+
+            margin: 0 auto;
+
+            color: #666;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           ATTRACTIONS SECTION
+        ========================= */
+
+        .attractions-section {
+            padding: 30px 8% 80px;
+
+            background: white;
+        }
+
+        .attractions-container {
+            max-width: 1200px;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 35px;
+
+            margin: 0 auto;
+        }
+
+
+        /* Attraction Card */
+
+        .attraction-card {
+            display: grid;
+
+            grid-template-columns: 43% 57%;
+
+            min-height: 340px;
+
+            overflow: hidden;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e2e2;
+            border-radius: 18px;
+
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.09);
+
+            transition: 0.3s;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+        }
+
+        .attraction-card:nth-child(even) {
+            grid-template-columns: 57% 43%;
+        }
+
+        .attraction-card:nth-child(even) .attraction-image {
+            order: 2;
+        }
+
+        .attraction-card:nth-child(even) .attraction-content {
+            order: 1;
+        }
+
+
+        /* Attraction Image */
+
+        .attraction-image {
+            position: relative;
+
+            min-height: 340px;
+            overflow: hidden;
+        }
+
+        .attraction-image img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+            object-fit: cover;
+
+            transition: 0.4s;
+        }
+
+        .attraction-card:hover .attraction-image img {
+            transform: scale(1.04);
+        }
+
+        .attraction-badge {
+            position: absolute;
+
+            top: 18px;
+            left: 18px;
+
+            padding: 8px 14px;
+
+            color: white;
+            background: #04AA6D;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+
+        /* Attraction Content */
+
+        .attraction-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            padding: 34px;
+        }
+
+        .attraction-location {
+            margin: 0 0 8px;
+
+            color: #777;
+            font-size: 14px;
+        }
+
+        .attraction-content h2 {
+            margin: 0 0 10px;
+
+            color: #023b2a;
+            font-size: 29px;
+        }
+
+        .rating {
+            margin-bottom: 15px;
+
+            color: #e5a000;
+            font-size: 18px;
+        }
+
+        .rating span {
+            margin-left: 7px;
+
+            color: #777;
+            font-size: 14px;
+        }
+
+        .attraction-description {
+            margin: 0 0 20px;
+
+            color: #606060;
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+
+        /* Attraction Information */
+
+        .attraction-info {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 22px;
+        }
+
+        .info-item {
+            padding: 12px 14px;
+
+            background: #f0f8f4;
+
+            border-radius: 10px;
+        }
+
+        .info-label {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #04764d;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .info-value {
+            color: #555;
+            font-size: 14px;
+        }
+
+
+        /* View Details Button */
+
+        .view-details {
+            align-self: flex-start;
+
+            display: inline-block;
+
+            padding: 11px 21px;
+
+            color: white;
+            background: #04AA6D;
+
+            border-radius: 24px;
+
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .view-details:hover {
+            background: #038c59;
+            transform: translateY(-2px);
+        }
+
+
+        
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            padding: 45px 8% 25px;
+
+            color: white;
+            background: #023b2a;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+
+            gap: 35px;
+        }
+
+        .footer-brand {
+            max-width: 360px;
+        }
+
+        .footer-brand h3 {
+            margin: 0 0 12px;
+
+            font-size: 24px;
+        }
+
+        .footer-brand p {
+            margin: 0;
+
+            color: #d8e5df;
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            margin: 0 0 14px;
+
+            font-size: 17px;
+        }
+
+        .footer-links a {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #d8e5df;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 35px;
+            padding-top: 20px;
+
+            text-align: center;
+            color: #d8e5df;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media screen and (max-width: 1100px) {
+
+            .topnav {
+                flex-wrap: wrap;
+
+                padding: 12px 20px;
+            }
+
+            .search-box {
+                width: 260px;
+            }
+
+            .nav-links {
+                width: 100%;
+                margin-left: 0;
+
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .attractions-hero {
+                height: 440px;
+            }
+
+            .hero-content {
+                top: 61%;
+            }
+        }
+
+
+        @media screen and (max-width: 850px) {
+
+            .attraction-card,
+            .attraction-card:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+
+            .attraction-card:nth-child(even) .attraction-image,
+            .attraction-card:nth-child(even) .attraction-content {
+                order: initial;
+            }
+
+            .attraction-image {
+                min-height: 280px;
+                height: 280px;
+            }
+
+            .attraction-content {
+                padding: 28px;
+            }
+        }
+
+
+        @media screen and (max-width: 700px) {
+
+            .topnav {
+                gap: 12px;
+            }
+
+            .search-box {
+                order: 3;
+                width: 100%;
+            }
+
+            .attractions-hero {
+                height: 470px;
+            }
+
+            .hero-content {
+                top: 64%;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .attractions-intro {
+                padding: 50px 20px 35px;
+            }
+
+            .attractions-section {
+                padding: 20px 20px 60px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .attraction-info {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+
+
+        @media screen and (max-width: 450px) {
+
+            .attraction-content h2 {
+                font-size: 25px;
+            }
+
+            .attraction-image {
+                min-height: 230px;
+                height: 230px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HERO AND NAVIGATION
+    ========================== -->
+
+    <div class="attractions-hero">
+
+        <img src="attractions_banner.jpg"
+             alt="Penang attractions">
+
+
+        <!-- Navigation Bar -->
+
+        <div class="topnav">
+
+
+            <!-- Logo -->
+
+            <a href="index.html"
+               class="logo">
+
+                <img src="logo_white.png"
+                     alt="Discover Penang logo">
+
+                <span>Discover Penang</span>
+
+            </a>
+
+
+            <!-- Search Bar -->
+
+            <div class="search-box">
+
+                <span class="search-icon">⌕</span>
+
+                <input type="text"
+                       placeholder="Search Penang">
+
+            </div>
+
+
+            <!-- Navigation Links -->
+
+            <div class="nav-links">
+
+				<a href="Discover Penang.html">Home</a>
+
+				<a href="explore.html">Explore</a>
+
+				<a href="attractions.html" class="active">Attractions</a>
+
+				<a href="food.html">Food</a>
+
+				<a href="hotels.html">Hotels</a>
+
+				<a href="transportation.html">Transportation</a>
+
+				<a href="events.html">Events</a>
+
+				<a href="contact.html">Contact</a>
+
+				<a href="feedback.html">Feedback</a>
+
+			</div>
+
+        </div>
+
+
+        <!-- Hero Content -->
+
+        <div class="hero-content">
+
+            <h1>Top Attractions in Penang</h1>
+
+            <p>
+                Discover heritage landmarks, natural wonders,
+                beautiful temples and unforgettable places
+                across the Pearl of the Orient.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         INTRODUCTION
+    ========================== -->
+
+    <section class="attractions-intro">
+
+        <h2 class="section-title">
+            Discover Penang's Best Attractions
+        </h2>
+
+        <p class="section-introduction">
+            From the historic streets of George Town to the peaceful
+            views of Penang Hill, explore some of the most popular
+            places that make Penang a unique travel destination.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         ATTRACTIONS LIST
+    ========================== -->
+
+    <section class="attractions-section">
+
+        <div class="attractions-container">
+
+
+            <!-- George Town -->
+
+            <article class="attraction-card">
+
+                <div class="attraction-image">
+
+                    <img src="georgetown.jpg"
+                         alt="George Town heritage streets">
+
+                    <span class="attraction-badge">
+                        Heritage
+                    </span>
+
+                </div>
+				
+
+
+                <div class="attraction-content">
+
+                    <p class="attraction-location">
+                        📍 George Town, Penang
+                    </p>
+
+                    <h2>George Town</h2>
+
+                    <div class="rating">
+                        ★★★★★
+                        <span>4.9</span>
+                    </div>
+
+                    <p class="attraction-description">
+                        Explore colourful heritage streets,
+                        colonial buildings, cultural landmarks,
+                        local cafés and world-famous street art
+                        in the historic centre of Penang.
+                    </p>
+
+
+                    <div class="attraction-info">
+
+                        <div class="info-item">
+
+                            <span class="info-label">
+                                Opening Hours
+                            </span>
+
+                            <span class="info-value">
+                                Open daily
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span class="info-label">
+                                Entrance Fee
+                            </span>
+
+                            <span class="info-value">
+                                Free
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="https://gtwhi.com.my/heritage-conservation/"
+                       class="view-details">
+                        View Details
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Penang Hill -->
+
+            <article class="attraction-card">
+
+                <div class="attraction-image">
+
+                    <img src="penanghill.jpg"
+                         alt="Penang Hill">
+
+                    <span class="attraction-badge">
+                        Nature
+                    </span>
+
+                </div>
+
+
+                <div class="attraction-content">
+
+                    <p class="attraction-location">
+                        📍 Air Itam, Penang
+                    </p>
+
+                    <h2>Penang Hill</h2>
+
+                    <div class="rating">
+                        ★★★★★
+                        <span>4.8</span>
+                    </div>
+
+                    <p class="attraction-description">
+                        Escape the city heat and enjoy cooler weather,
+                        beautiful forest surroundings and panoramic
+                        views across George Town and the mainland.
+                    </p>
+
+
+                    <div class="attraction-info">
+
+                        <div class="info-item">
+
+                            <span class="info-label">
+                                Opening Hours
+                            </span>
+
+                            <span class="info-value">
+                                6:30 AM – 11:00 PM
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span class="info-label">
+                                Entrance Fee
+                            </span>
+
+                            <span class="info-value">
+                                Ticket required
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="https://www.penanghill.gov.my/index.php/en/"
+                       class="view-details">
+                        View Details
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Kek Lok Si Temple -->
+
+            <article class="attraction-card">
+
+                <div class="attraction-image">
+
+                    <img src="kekloksi.jpg"
+                         alt="Kek Lok Si Temple">
+
+                    <span class="attraction-badge">
+                        Temple
+                    </span>
+
+                </div>
+
+
+                <div class="attraction-content">
+
+                    <p class="attraction-location">
+                        📍 Air Itam, Penang
+                    </p>
+
+                    <h2>Kek Lok Si Temple</h2>
+
+                    <div class="rating">
+                        ★★★★★
+                        <span>4.8</span>
+                    </div>
+
+                    <p class="attraction-description">
+                        Visit one of Penang's most famous religious
+                        landmarks, known for its grand architecture,
+                        peaceful gardens, pagodas and hilltop views.
+                    </p>
+
+
+                    <div class="attraction-info">
+
+                        <div class="info-item">
+
+                            <span class="info-label">
+                                Opening Hours
+                            </span>
+
+                            <span class="info-value">
+                                8:30 AM – 5:30 PM
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span class="info-label">
+                                Entrance Fee
+                            </span>
+
+                            <span class="info-value">
+                                Mostly free
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="https://kekloksitemple.com/"
+                       class="view-details">
+                        View Details
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Batu Ferringhi -->
+
+            <article class="attraction-card">
+
+                <div class="attraction-image">
+
+                    <img src="batuferringhi.jpg"
+                         alt="Batu Ferringhi Beach">
+
+                    <span class="attraction-badge">
+                        Beach
+                    </span>
+
+                </div>
+
+
+                <div class="attraction-content">
+
+                    <p class="attraction-location">
+                        📍 Batu Ferringhi, Penang
+                    </p>
+
+                    <h2>Batu Ferringhi</h2>
+
+                    <div class="rating">
+                        ★★★★☆
+                        <span>4.5</span>
+                    </div>
+
+                    <p class="attraction-description">
+                        Relax beside the sea, enjoy water sports,
+                        visit nearby resorts and experience the
+                        popular evening night market.
+                    </p>
+
+
+                    <div class="attraction-info">
+
+                        <div class="info-item">
+
+                            <span class="info-label">
+                                Opening Hours
+                            </span>
+
+                            <span class="info-value">
+                                Open daily
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span class="info-label">
+                                Entrance Fee
+                            </span>
+
+                            <span class="info-value">
+                                Free
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="https://mumpacktravel.com/the-best-things-to-do-in-batu-ferringhi-penang/" class="view-details">
+                        View Details
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Clan Jetties -->
+
+            <article class="attraction-card">
+
+                <div class="attraction-image">
+
+                    <img src="clanjetties.jpg"
+                         alt="Clan Jetties Penang">
+
+                    <span class="attraction-badge">
+                        Culture
+                    </span>
+
+                </div>
+
+
+                <div class="attraction-content">
+
+                    <p class="attraction-location">
+                        📍 Weld Quay, George Town
+                    </p>
+
+                    <h2>Clan Jetties</h2>
+
+                    <div class="rating">
+                        ★★★★☆
+                        <span>4.4</span>
+                    </div>
+
+                    <p class="attraction-description">
+                        Walk through traditional waterfront villages
+                        built on wooden stilts and discover the history,
+                        culture and daily life of Penang's Chinese clans.
+                    </p>
+
+
+                    <div class="attraction-info">
+
+                        <div class="info-item">
+
+                            <span class="info-label">
+                                Opening Hours
+                            </span>
+
+                            <span class="info-value">
+                                9:00 AM – 9:00 PM
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span class="info-label">
+                                Entrance Fee
+                            </span>
+
+                            <span class="info-value">
+                                Free
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="https://en.wikipedia.org/wiki/Clan_Jetties"
+                       class="view-details">
+                        View Details
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Entopia -->
+
+            <article class="attraction-card">
+
+                <div class="attraction-image">
+
+                    <img src="entopia.jpg"
+                         alt="Entopia Penang">
+
+                    <span class="attraction-badge">
+                        Wildlife
+                    </span>
+
+                </div>
+
+
+                <div class="attraction-content">
+
+                    <p class="attraction-location">
+                        📍 Teluk Bahang, Penang
+                    </p>
+
+                    <h2>Entopia</h2>
+
+                    <div class="rating">
+                        ★★★★★
+                        <span>4.7</span>
+                    </div>
+
+                    <p class="attraction-description">
+                        Enter a tropical living garden filled with
+                        colourful butterflies, insects, reptiles
+                        and educational nature exhibits.
+                    </p>
+
+
+                    <div class="attraction-info">
+
+                        <div class="info-item">
+
+                            <span class="info-label">
+                                Opening Hours
+                            </span>
+
+                            <span class="info-value">
+                                9:00 AM – 6:00 PM
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span class="info-label">
+                                Entrance Fee
+                            </span>
+
+                            <span class="info-value">
+                                Ticket required
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="https://www.entopia.com/"
+                       class="view-details">
+                        View Details
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+
+            <div class="footer-brand">
+
+                <h3>
+                    Discover Penang
+                </h3>
+
+                <p>
+                    Explore Penang's culture, attractions,
+                    local cuisine and unforgettable travel experiences.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>
+                    Explore
+                </h4>
+
+                <a href="Discover Penang.html">
+                    Home
+                </a>
+
+                <a href="explore.html">
+                    Explore
+                </a>
+
+                <a href="attractions.html">
+                    Attractions
+                </a>
+
+                <a href="food.html">
+                    Food
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>
+                    Travel
+                </h4>
+
+                <a href="hotels.html">
+                    Hotels
+                </a>
+
+                <a href="transportation.html">
+                    Transportation
+                </a>
+
+                <a href="events.html">
+                    Events
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>
+                    Support
+                </h4>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="feedback.html">
+                    Feedback
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            © 2026 Discover Penang. All rights reserved.
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>

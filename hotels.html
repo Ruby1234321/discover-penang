@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Discover Penang</title>
+
+    <style>
+
+        /* =========================
+           GLOBAL STYLE
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            color: #222;
+            background: #f7f8f7;
+
+            font-family: Arial, sans-serif;
+        }
+
+        .section-title {
+            margin: 0 0 14px;
+
+            color: #023b2a;
+
+            font-size: 36px;
+            text-align: center;
+        }
+
+        .section-description {
+            max-width: 780px;
+
+            margin: 0 auto 38px;
+
+            color: #666;
+
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hotel-hero {
+            position: relative;
+
+            width: 100%;
+            height: 420px;
+
+            overflow: hidden;
+
+            color: white;
+        }
+
+        .hotel-hero > img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+        }
+
+        .hotel-hero::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.5);
+
+            z-index: 1;
+        }
+
+
+        /* =========================
+           NAVIGATION BAR
+        ========================= */
+
+        .topnav {
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            min-height: 60px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 24px;
+
+            padding: 8px 35px;
+
+            background: rgba(0, 0, 0, 0.38);
+
+            z-index: 3;
+        }
+
+
+        /* Logo */
+
+        .logo {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            color: white;
+
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo img {
+            width: 36px;
+            height: 36px;
+
+            object-fit: contain;
+        }
+
+        .logo span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+
+        /* Search Box */
+
+        .search-box {
+            width: 280px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 16px;
+
+            background: white;
+
+            border-radius: 25px;
+        }
+
+        .search-icon {
+            margin-right: 10px;
+
+            color: #333;
+
+            font-size: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+
+            font-size: 15px;
+        }
+
+
+        /* Navigation Links */
+
+        .nav-links {
+            margin-left: auto;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            padding: 8px 12px;
+
+            color: white;
+
+            border-radius: 5px;
+
+            font-size: 15px;
+            text-align: center;
+            text-decoration: none;
+            white-space: nowrap;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .nav-links a.active {
+            background: #04AA6D;
+        }
+
+
+        /* Hero Text */
+
+        .hero-content {
+            position: absolute;
+
+            top: 57%;
+            left: 50%;
+
+            width: 90%;
+            max-width: 850px;
+
+            transform: translate(-50%, -50%);
+
+            text-align: center;
+
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            margin: 0 0 15px;
+
+            font-family: Georgia, serif;
+            font-size: 52px;
+        }
+
+        .hero-content p {
+            max-width: 720px;
+
+            margin: 0 auto;
+
+            font-size: 19px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           INTRODUCTION
+        ========================= */
+
+        .hotel-intro {
+            padding: 60px 8% 35px;
+
+            background: white;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           HOTEL CATEGORIES
+        ========================= */
+
+        .hotel-categories {
+            padding: 15px 8% 70px;
+
+            background: white;
+        }
+
+        .category-container {
+            max-width: 1200px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(200px, 1fr));
+
+            gap: 25px;
+
+            margin: 0 auto;
+        }
+		
+		
+
+        .category-card {
+            padding: 30px 22px;
+
+            background: #f0f8f4;
+
+            border: 1px solid #dbe9e2;
+            border-radius: 15px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+		
+		.category-card:hover {
+            transform: translateY(-6px);
+
+            border-color: #04AA6D;
+
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+        }
+
+       
+
+        .category-icon {
+            margin-bottom: 14px;
+
+            font-size: 40px;
+        }
+
+        .category-card h3 {
+            margin: 0 0 9px;
+
+            color: #023b2a;
+
+            font-size: 20px;
+        }
+
+        .category-rating {
+            margin-bottom: 12px;
+
+            color: #e5a000;
+
+            font-size: 16px;
+        }
+
+        .category-card p {
+            margin: 0;
+
+            color: #666;
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           FEATURED HOTELS
+        ========================= */
+
+        .featured-hotels {
+            padding: 70px 8% 80px;
+
+            background: #f7f8f7;
+        }
+
+        .hotel-container {
+            max-width: 1200px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(260px, 1fr));
+
+            gap: 30px;
+
+            margin: 0 auto;
+        }
+
+
+        /* Hotel Card */
+
+        .hotel-card {
+            display: flex;
+            flex-direction: column;
+
+            overflow: hidden;
+
+            background: white;
+
+            border: 1px solid #e2e2e2;
+            border-radius: 16px;
+
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+
+            transition: 0.3s;
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow: 0 13px 30px rgba(0, 0, 0, 0.14);
+        }
+
+
+        /* Hotel Image */
+
+        .hotel-image {
+            position: relative;
+
+            height: 230px;
+
+            overflow: hidden;
+        }
+
+        .hotel-image img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            transition: 0.4s;
+        }
+
+        .hotel-card:hover .hotel-image img {
+            transform: scale(1.05);
+        }
+
+        .hotel-badge {
+            position: absolute;
+
+            top: 15px;
+            left: 15px;
+
+            padding: 7px 13px;
+
+            color: white;
+            background: #04AA6D;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+
+        /* Hotel Content */
+
+        .hotel-content {
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 22px;
+        }
+
+        .hotel-content h3 {
+            margin: 0 0 8px;
+
+            color: #023b2a;
+
+            font-size: 22px;
+        }
+
+        .hotel-location {
+            margin: 0 0 11px;
+
+            color: #666;
+
+            font-size: 14px;
+        }
+
+        .hotel-rating {
+            margin-bottom: 13px;
+
+            color: #e5a000;
+
+            font-size: 17px;
+        }
+
+        .hotel-rating span {
+            margin-left: 7px;
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+        .hotel-description {
+            flex: 1;
+
+            margin: 0 0 18px;
+
+            color: #666;
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* Amenities */
+
+        .hotel-amenities {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 8px;
+
+            margin-bottom: 18px;
+        }
+
+        .hotel-amenities span {
+            padding: 8px 9px;
+
+            color: #416157;
+            background: #f0f8f4;
+
+            border-radius: 7px;
+
+            font-size: 12px;
+        }
+
+
+        /* Price */
+
+        .hotel-price {
+            margin-bottom: 18px;
+            padding: 12px 14px;
+
+            background: #f6faf8;
+
+            border-left: 4px solid #04AA6D;
+            border-radius: 7px;
+        }
+
+        .hotel-price strong {
+            color: #04764d;
+
+            font-size: 18px;
+        }
+
+        .hotel-price span {
+            color: #777;
+
+            font-size: 13px;
+        }
+
+
+        /* Hotel Buttons */
+
+        .hotel-buttons {
+            display: flex;
+
+            gap: 10px;
+        }
+
+        .hotel-button,
+        .map-button {
+            flex: 1;
+
+            display: inline-block;
+
+            padding: 11px 12px;
+
+            border-radius: 22px;
+
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .hotel-button {
+            color: white;
+            background: #04AA6D;
+        }
+
+        .hotel-button:hover {
+            background: #038c59;
+        }
+
+        .map-button {
+            color: #04764d;
+            background: white;
+
+            border: 1px solid #04AA6D;
+        }
+
+        .map-button:hover {
+            color: white;
+            background: #04764d;
+        }
+
+
+        /* =========================
+           HOTEL TIPS
+        ========================= */
+
+        .hotel-tips {
+            padding: 75px 8%;
+
+            background: white;
+        }
+
+        .tips-container {
+            max-width: 1100px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(220px, 1fr));
+
+            gap: 25px;
+
+            margin: 0 auto;
+        }
+
+        .tip-card {
+            padding: 30px 25px;
+
+            background: #f0f8f4;
+
+            border-radius: 15px;
+
+            text-align: center;
+        }
+
+        .tip-icon {
+            margin-bottom: 14px;
+
+            font-size: 38px;
+        }
+
+        .tip-card h3 {
+            margin: 0 0 10px;
+
+            color: #023b2a;
+
+            font-size: 19px;
+        }
+
+        .tip-card p {
+            margin: 0;
+
+            color: #666;
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           CALL TO ACTION
+        ========================= */
+
+        .hotel-message {
+            padding: 65px 8%;
+
+            color: white;
+            background: #04764d;
+
+            text-align: center;
+        }
+
+        .hotel-message h2 {
+            margin: 0 0 14px;
+
+            font-size: 34px;
+        }
+
+        .hotel-message p {
+            max-width: 720px;
+
+            margin: 0 auto 24px;
+
+            color: #e2f1eb;
+
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .explore-button {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            color: #023b2a;
+            background: white;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .explore-button:hover {
+            background: #edf7f2;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            padding: 45px 8% 25px;
+
+            color: white;
+            background: #023b2a;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+
+            gap: 35px;
+        }
+
+        .footer-brand {
+            max-width: 360px;
+        }
+
+        .footer-brand h3 {
+            margin: 0 0 12px;
+
+            font-size: 24px;
+        }
+
+        .footer-brand p {
+            margin: 0;
+
+            color: #d8e5df;
+
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            margin: 0 0 14px;
+
+            font-size: 17px;
+        }
+
+        .footer-links a {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #d8e5df;
+
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 35px;
+            padding-top: 20px;
+
+            color: #d8e5df;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media screen and (max-width: 1100px) {
+
+            .topnav {
+                flex-wrap: wrap;
+
+                padding: 12px 20px;
+            }
+
+            .search-box {
+                width: 260px;
+            }
+
+            .nav-links {
+                width: 100%;
+
+                margin-left: 0;
+
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hotel-hero {
+                height: 460px;
+            }
+
+            .hero-content {
+                top: 62%;
+            }
+
+            .category-container {
+                grid-template-columns:
+                    repeat(2, minmax(220px, 1fr));
+            }
+
+            .hotel-container {
+                grid-template-columns:
+                    repeat(2, minmax(260px, 1fr));
+            }
+
+        }
+
+
+        @media screen and (max-width: 750px) {
+
+            .topnav {
+                gap: 12px;
+            }
+
+            .search-box {
+                order: 3;
+
+                width: 100%;
+            }
+
+            .hotel-hero {
+                height: 490px;
+            }
+
+            .hero-content {
+                top: 66%;
+            }
+
+            .hero-content h1 {
+                font-size: 39px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .hotel-intro {
+                padding: 50px 20px 25px;
+            }
+
+            .hotel-categories,
+            .featured-hotels,
+            .hotel-tips {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .category-container,
+            .hotel-container,
+            .tips-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+        }
+
+
+        @media screen and (max-width: 450px) {
+
+            .hotel-buttons {
+                flex-direction: column;
+            }
+
+            .hotel-amenities {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HERO AND NAVIGATION
+    ========================== -->
+
+    <div class="hotel-hero">
+
+        <img src="hotel_banner.jpg"
+             alt="Penang hotel and resort">
+
+
+        <div class="topnav">
+
+
+            <!-- Logo -->
+
+            <a href="Recover Penang.html"
+               class="logo">
+
+                <img src="logo_white.png"
+                     alt="Discover Penang logo">
+
+                <span>Discover Penang</span>
+
+            </a>
+
+
+            <!-- Search Bar -->
+
+            <div class="search-box">
+
+                <span class="search-icon">⌕</span>
+
+                <input type="text"
+                       placeholder="Search Penang">
+
+            </div>
+
+
+            <!-- Saved Navigation -->
+
+           <div class="nav-links">
+
+				<a href="Discover Penang.html">Home</a>
+
+				<a href="explore.html">Explore</a>
+
+				<a href="attractions.html">Attractions</a>
+
+				<a href="food.html">Food</a>
+
+				<a href="hotels.html" class="active">Hotels</a>
+
+				<a href="transportation.html">Transportation</a>
+
+				<a href="events.html">Events</a>
+
+				<a href="contact.html">Contact</a>
+
+				<a href="feedback.html">Feedback</a>
+
+			</div>
+
+        </div>
+
+
+        <!-- Hero Content -->
+
+        <div class="hero-content">
+
+            <h1>
+                Stay in Comfort, Experience Penang
+            </h1>
+
+            <p>
+                From luxury seaside resorts to charming heritage hotels,
+                discover comfortable accommodation for every traveller.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         INTRODUCTION
+    ========================== -->
+
+    <section class="hotel-intro">
+
+        <h2 class="section-title">
+            Find Your Perfect Stay
+        </h2>
+
+        <p class="section-description">
+            Choose from luxury hotels, beach resorts,
+            heritage accommodation and affordable stays
+            located near Penang's attractions, restaurants
+            and shopping areas.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         HOTEL CATEGORIES
+    ========================== -->
+
+    <section class="hotel-categories">
+
+        <div class="category-container">
+
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🏨
+                </div>
+
+                <h3>Luxury Hotels</h3>
+
+                <div class="category-rating">
+                    ★★★★★
+                </div>
+
+                <p>
+                    Premium accommodation with elegant rooms,
+                    fine dining, spa services and excellent facilities.
+                </p>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🏖️
+                </div>
+
+                <h3>Beach Resorts</h3>
+
+                <div class="category-rating">
+                    ★★★★★
+                </div>
+
+                <p>
+                    Relax beside the sea with swimming pools,
+                    ocean views and family-friendly activities.
+                </p>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🏠
+                </div>
+
+                <h3>Boutique Hotels</h3>
+
+                <div class="category-rating">
+                    ★★★★☆
+                </div>
+
+                <p>
+                    Stay in uniquely designed hotels
+                    inspired by Penang's heritage and local culture.
+                </p>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    💰
+                </div>
+
+                <h3>Budget Hotels</h3>
+
+                <div class="category-rating">
+                    ★★★☆☆
+                </div>
+
+                <p>
+                    Comfortable and convenient accommodation
+                    for travellers looking for affordable options.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FEATURED HOTELS
+    ========================== -->
+
+    <section class="featured-hotels">
+
+        <h2 class="section-title">
+            Featured Hotels
+        </h2>
+
+        <p class="section-description">
+            Explore some of Penang's popular accommodation options.
+            Use the links to visit the hotel's website
+            or view its location on Google Maps.
+        </p>
+
+
+        <div class="hotel-container">
+
+
+            <!-- Eastern & Oriental Hotel -->
+
+            <article class="hotel-card">
+
+                <div class="hotel-image">
+
+                    <img src="eo_hotel.jpg"
+                         alt="Eastern and Oriental Hotel Penang">
+
+                    <span class="hotel-badge">
+                        Luxury
+                    </span>
+
+                </div>
+
+
+                <div class="hotel-content">
+
+                    <h3>Eastern & Oriental Hotel</h3>
+
+                    <p class="hotel-location">
+                        📍 George Town
+                    </p>
+
+                    <div class="hotel-rating">
+                        ★★★★★
+                        <span>5-star hotel</span>
+                    </div>
+
+                    <p class="hotel-description">
+                        A historic luxury hotel offering elegant rooms,
+                        sea views and a convenient location
+                        near George Town's heritage attractions.
+                    </p>
+
+
+                    <div class="hotel-amenities">
+
+                        <span>✓ Free WiFi</span>
+
+                        <span>✓ Swimming Pool</span>
+
+                        <span>✓ Restaurant</span>
+
+                        <span>✓ Fitness Centre</span>
+
+                    </div>
+
+
+                    <div class="hotel-price">
+
+                        <strong>Luxury Stay</strong>
+
+                        <span> · Price varies by date</span>
+
+                    </div>
+
+
+                    <div class="hotel-buttons">
+
+                        <a href="https://www.eohotels.com/hotel/"
+                           
+                           class="hotel-button">
+                            Hotel Website
+                        </a>
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=Eastern+and+Oriental+Hotel+Penang"
+                          
+                           
+                           class="map-button">
+                            View on Map
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PARKROYAL Penang Resort -->
+
+            <article class="hotel-card">
+
+                <div class="hotel-image">
+
+                    <img src="parkroyal.jpg"
+                         alt="PARKROYAL Penang Resort">
+
+                    <span class="hotel-badge">
+                        Beach Resort
+                    </span>
+
+                </div>
+
+
+                <div class="hotel-content">
+
+                    <h3>PARKROYAL Penang Resort</h3>
+
+                    <p class="hotel-location">
+                        📍 Batu Ferringhi
+                    </p>
+
+                    <div class="hotel-rating">
+                        ★★★★★
+                        <span>5-star resort</span>
+                    </div>
+
+                    <p class="hotel-description">
+                        A beachfront resort with tropical gardens,
+                        swimming pools and convenient access
+                        to Batu Ferringhi Beach and the night market.
+                    </p>
+
+
+                    <div class="hotel-amenities">
+
+                        <span>✓ Beach Access</span>
+
+                        <span>✓ Swimming Pool</span>
+
+                        <span>✓ Family Activities</span>
+
+                        <span>✓ Restaurant</span>
+
+                    </div>
+
+
+                    <div class="hotel-price">
+
+                        <strong>Premium Resort</strong>
+
+                        <span> · Price varies by date</span>
+
+                    </div>
+
+
+                    <div class="hotel-buttons">
+
+                        <a href="https://www.panpacific.com/en/hotels-and-resorts/pr-penang.html"
+                          
+                           class="hotel-button">
+                            Hotel Website
+                        </a>
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=PARKROYAL+Penang+Resort"
+                           
+                           class="map-button">
+                            View on Map
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Hard Rock Hotel Penang -->
+
+            <article class="hotel-card">
+
+                <div class="hotel-image">
+
+                    <img src="hardrock.jpg"
+                         alt="Hard Rock Hotel Penang">
+
+                    <span class="hotel-badge">
+                        Family Resort
+                    </span>
+
+                </div>
+
+
+                <div class="hotel-content">
+
+                    <h3>Hard Rock Hotel Penang</h3>
+
+                    <p class="hotel-location">
+                        📍 Batu Ferringhi
+                    </p>
+
+                    <div class="hotel-rating">
+                        ★★★★★
+                        <span>5-star hotel</span>
+                    </div>
+
+                    <p class="hotel-description">
+                        A lively beachfront hotel featuring
+                        music-inspired rooms, entertainment,
+                        family facilities and a large swimming pool.
+                    </p>
+
+
+                    <div class="hotel-amenities">
+
+                        <span>✓ Beach Access</span>
+
+                        <span>✓ Swimming Pool</span>
+
+                        <span>✓ Kids Club</span>
+
+                        <span>✓ Live Entertainment</span>
+
+                    </div>
+
+
+                    <div class="hotel-price">
+
+                        <strong>Family Resort</strong>
+
+                        <span> · Price varies by date</span>
+
+                    </div>
+
+
+                    <div class="hotel-buttons">
+
+                        <a href="https://hotel.hardrock.com/penang/"
+                           
+                           rel="noopener noreferrer"
+                           class="hotel-button">
+                            Hotel Website
+                        </a>
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=Hard+Rock+Hotel+Penang"
+                           
+                           class="map-button">
+                            View on Map
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- JEN Penang Georgetown -->
+
+            <article class="hotel-card">
+
+                <div class="hotel-image">
+
+                    <img src="jen.jpg"
+                         alt="JEN Penang Georgetown">
+
+                    <span class="hotel-badge">
+                        City Hotel
+                    </span>
+
+                </div>
+
+
+                <div class="hotel-content">
+
+                    <h3>JEN Penang Georgetown</h3>
+
+                    <p class="hotel-location">
+                        📍 George Town
+                    </p>
+
+                    <div class="hotel-rating">
+                        ★★★★☆
+                        <span>4-star hotel</span>
+                    </div>
+
+                    <p class="hotel-description">
+                        A modern city hotel located near shopping malls,
+                        restaurants and major attractions
+                        in the centre of George Town.
+                    </p>
+
+
+                    <div class="hotel-amenities">
+
+                        <span>✓ Free WiFi</span>
+
+                        <span>✓ Swimming Pool</span>
+
+                        <span>✓ Fitness Centre</span>
+
+                        <span>✓ City Location</span>
+
+                    </div>
+
+
+                    <div class="hotel-price">
+
+                        <strong>City Stay</strong>
+
+                        <span> · Price varies by date</span>
+
+                    </div>
+
+
+                    <div class="hotel-buttons">
+
+                        <a href="https://www.shangri-la.com/hotels/jen/penang/georgetown/"
+                           
+                           class="hotel-button">
+                            Hotel Website
+                        </a>
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=JEN+Penang+Georgetown"
+                           
+                           class="map-button">
+                            View on Map
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- The George Penang -->
+
+            <article class="hotel-card">
+
+                <div class="hotel-image">
+
+                    <img src="thegeorge.jpg"
+                         alt="The George Penang hotel">
+
+                    <span class="hotel-badge">
+                        Boutique
+                    </span>
+
+                </div>
+
+
+                <div class="hotel-content">
+
+                    <h3>The George Penang</h3>
+
+                    <p class="hotel-location">
+                        📍 George Town
+                    </p>
+
+                    <div class="hotel-rating">
+                        ★★★★★
+                        <span>Luxury boutique hotel</span>
+                    </div>
+
+                    <p class="hotel-description">
+                        A stylish hotel combining modern comfort
+                        with elegant design in a central location
+                        near Penang's heritage streets.
+                    </p>
+
+
+                    <div class="hotel-amenities">
+
+                        <span>✓ Free WiFi</span>
+
+                        <span>✓ Swimming Pool</span>
+
+                        <span>✓ Restaurant</span>
+
+                        <span>✓ Heritage Location</span>
+
+                    </div>
+
+
+                    <div class="hotel-price">
+
+                        <strong>Boutique Stay</strong>
+
+                        <span> · Price varies by date</span>
+
+                    </div>
+
+
+                    <div class="hotel-buttons">
+
+                        <a href="https://www.discoverasr.com/en/the-crest-collection/malaysia/the-george-penang-by-the-crest-collection"
+                           
+                           class="hotel-button">
+                            Hotel Website
+                        </a>
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=The+George+Penang"
+                           
+                           class="map-button">
+                            View on Map
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Areca Hotel Penang -->
+
+            <article class="hotel-card">
+
+                <div class="hotel-image">
+
+                    <img src="areca.jpg"
+                         alt="Areca Hotel Penang">
+
+                    <span class="hotel-badge">
+                        Heritage
+                    </span>
+
+                </div>
+
+
+                <div class="hotel-content">
+
+                    <h3>Areca Hotel Penang</h3>
+
+                    <p class="hotel-location">
+                        📍 George Town
+                    </p>
+
+                    <div class="hotel-rating">
+                        ★★★★☆
+                        <span>Heritage boutique hotel</span>
+                    </div>
+
+                    <p class="hotel-description">
+                        A charming heritage hotel with traditional
+                        architecture, comfortable rooms
+                        and easy access to George Town attractions.
+                    </p>
+
+
+                    <div class="hotel-amenities">
+
+                        <span>✓ Free WiFi</span>
+
+                        <span>✓ Heritage Design</span>
+
+                        <span>✓ Restaurant</span>
+
+                        <span>✓ Central Location</span>
+
+                    </div>
+
+
+                    <div class="hotel-price">
+
+                        <strong>Heritage Stay</strong>
+
+                        <span> · Price varies by date</span>
+
+                    </div>
+
+
+                    <div class="hotel-buttons">
+
+                        <a href="https://arecahotelpenang.com/the-hotel/"
+                          
+                           class="hotel-button">
+                            Hotel Website
+                        </a>
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=Areca+Hotel+Penang"
+                           
+                           class="map-button">
+                            View on Map
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         HOTEL TIPS
+    ========================== -->
+
+    <section class="hotel-tips">
+
+        <h2 class="section-title">
+            Hotel Booking Tips
+        </h2>
+
+        <p class="section-description">
+            Consider these simple tips when choosing
+            accommodation for your Penang trip.
+        </p>
+
+
+        <div class="tips-container">
+
+
+            <div class="tip-card">
+
+                <div class="tip-icon">
+                    📍
+                </div>
+
+                <h3>Choose the Right Location</h3>
+
+                <p>
+                    Stay in George Town for heritage attractions
+                    or Batu Ferringhi for beaches and resorts.
+                </p>
+
+            </div>
+
+
+            <div class="tip-card">
+
+                <div class="tip-icon">
+                    📅
+                </div>
+
+                <h3>Book Early</h3>
+
+                <p>
+                    Hotel rooms may fill quickly during weekends,
+                    school holidays and festive seasons.
+                </p>
+
+            </div>
+
+
+            <div class="tip-card">
+
+                <div class="tip-icon">
+                    🔍
+                </div>
+
+                <h3>Check the Facilities</h3>
+
+                <p>
+                    Confirm parking, breakfast, WiFi,
+                    swimming pool and family facilities before booking.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CALL TO ACTION
+    ========================== -->
+
+    <section class="hotel-message">
+
+        <h2>
+            Ready to Explore Penang?
+        </h2>
+
+        <p>
+            Discover Penang's attractions, food
+            and useful travel information
+            before planning your stay.
+        </p>
+
+        <a href="explore.html"
+           class="explore-button">
+            Explore Penang
+        </a>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+
+            <div class="footer-brand">
+
+                <h3>Discover Penang</h3>
+
+                <p>
+                    Explore Penang's culture, attractions,
+                    local cuisine and unforgettable travel experiences.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Quick Links</h4>
+
+                <a href="Recover Penang.html">
+                    Home
+                </a>
+
+                <a href="explore.html">
+                    Explore
+                </a>
+
+                <a href="attractions.html">
+                    Attractions
+                </a>
+
+                <a href="food.html">
+                    Food
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Travel</h4>
+
+                <a href="hotels.html">
+                    Hotels
+                </a>
+
+                <a href="travelguide.html">
+                    Travel Guide
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            © 2026 Discover Penang. All rights reserved.
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>

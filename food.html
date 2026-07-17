@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Discover Penang</title>
+
+
+    <style>
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            color: #333;
+            background: #f7f8f7;
+
+            font-family: Arial, sans-serif;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .section-title {
+            margin: 0 0 13px;
+
+            color: #023b2a;
+
+            font-size: 38px;
+            text-align: center;
+        }
+
+        .section-description {
+            max-width: 820px;
+
+            margin: 0 auto 45px;
+
+            color: #666;
+
+            font-size: 17px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .food-hero {
+            position: relative;
+
+            width: 100%;
+            height: 470px;
+
+            overflow: hidden;
+
+            color: white;
+        }
+
+        .food-hero > img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+        }
+
+        .food-hero::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.42),
+                    rgba(0, 0, 0, 0.62)
+                );
+
+            z-index: 1;
+        }
+
+
+        /* =========================
+           NAVIGATION BAR
+        ========================= */
+
+        .topnav {
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            min-height: 60px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 24px;
+
+            padding: 8px 35px;
+
+            background: rgba(0, 0, 0, 0.38);
+
+            z-index: 3;
+        }
+
+
+        /* Logo */
+
+        .logo {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            color: white;
+
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo img {
+            width: 36px;
+            height: 36px;
+
+            object-fit: contain;
+        }
+
+        .logo span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+
+        /* Search Box */
+
+        .search-box {
+            width: 280px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 16px;
+
+            background: white;
+
+            border-radius: 25px;
+        }
+
+        .search-icon {
+            margin-right: 10px;
+
+            color: #333;
+
+            font-size: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+
+            font-size: 15px;
+        }
+
+
+        /* Navigation Links */
+
+        .nav-links {
+            margin-left: auto;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            padding: 8px 12px;
+
+            color: white;
+
+            border-radius: 5px;
+
+            font-size: 15px;
+            text-align: center;
+            text-decoration: none;
+            white-space: nowrap;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .nav-links a.active {
+            background: #04AA6D;
+        }
+
+
+
+        /* Hero Text */
+
+        .hero-content {
+            position: absolute;
+
+            top: 58%;
+            left: 50%;
+
+            width: 90%;
+            max-width: 850px;
+
+            transform: translate(-50%, -50%);
+
+            text-align: center;
+
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            margin: 0 0 15px;
+
+            font-family: Georgia, serif;
+            font-size: 56px;
+        }
+
+        .hero-content p {
+            max-width: 760px;
+
+            margin: 0 auto;
+
+            font-size: 19px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           INTRODUCTION
+        ========================= */
+
+        .food-introduction {
+            padding: 72px 8% 35px;
+
+            background: white;
+        }
+
+
+        /* =========================
+           FOOD CARDS
+        ========================= */
+
+        .famous-food {
+            padding: 30px 8% 90px;
+
+            background: white;
+        }
+
+        .food-grid {
+            max-width: 1200px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(260px, 1fr));
+
+            gap: 30px;
+
+            margin: 0 auto;
+        }
+
+        .food-card {
+            overflow: hidden;
+
+            background: white;
+
+            border: 1px solid #e0e5e2;
+            border-radius: 17px;
+
+            box-shadow: 0 7px 22px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.3s,
+                box-shadow 0.3s;
+        }
+
+        .food-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow: 0 15px 31px rgba(0, 0, 0, 0.14);
+        }
+
+        .food-image {
+            position: relative;
+
+            height: 255px;
+
+            overflow: hidden;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            transition: transform 0.4s;
+        }
+
+        .food-card:hover .food-image img {
+            transform: scale(1.06);
+        }
+
+        .food-category {
+            position: absolute;
+
+            top: 17px;
+            left: 17px;
+
+            padding: 8px 17px;
+
+            color: white;
+            background: #04aa6d;
+
+            border-radius: 22px;
+
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .food-content {
+            padding: 25px;
+        }
+
+        .food-content h3 {
+            margin: 0 0 15px;
+
+            color: #023b2a;
+
+            font-size: 25px;
+        }
+
+        .food-rating {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 16px;
+        }
+
+        .stars {
+            color: #f2a000;
+
+            font-size: 17px;
+            letter-spacing: 1px;
+        }
+
+        .rating-number {
+            color: #666;
+
+            font-size: 14px;
+        }
+
+        .food-description {
+            min-height: 83px;
+
+            margin: 0 0 21px;
+
+            color: #626864;
+
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .food-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 22px;
+            padding: 13px 15px;
+
+            background: #eef7f3;
+
+            border-radius: 11px;
+        }
+
+        .food-price {
+            color: #04764d;
+
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .food-type {
+            color: #666;
+
+            font-size: 13px;
+            text-align: right;
+        }
+
+        .map-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 7px;
+
+            padding: 12px 20px;
+
+            color: white;
+            background: #04aa6d;
+
+            border-radius: 24px;
+
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+
+            transition:
+                background 0.3s,
+                transform 0.3s;
+        }
+
+        .map-button:hover {
+            background: #038c59;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           FOOD TIPS
+        ========================= */
+
+        .food-tips {
+            padding: 78px 8%;
+
+            background: #f2f7f4;
+        }
+
+        .tips-grid {
+            max-width: 1100px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(220px, 1fr));
+
+            gap: 25px;
+
+            margin: 0 auto;
+        }
+
+        .tip-card {
+            padding: 30px 25px;
+
+            background: white;
+
+            border: 1px solid #dce9e2;
+            border-radius: 15px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+
+            border-color: #04aa6d;
+
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .tip-icon {
+            width: 65px;
+            height: 65px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 18px;
+
+            background: #e7f6ef;
+
+            border-radius: 50%;
+
+            font-size: 30px;
+        }
+
+        .tip-card h3 {
+            margin: 0 0 10px;
+
+            color: #023b2a;
+
+            font-size: 20px;
+        }
+
+        .tip-card p {
+            margin: 0;
+
+            color: #666;
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .food-cta {
+            padding: 70px 8%;
+
+            color: white;
+            background:
+                linear-gradient(
+                    135deg,
+                    #023b2a,
+                    #04aa6d
+                );
+
+            text-align: center;
+        }
+
+        .food-cta h2 {
+            margin: 0 0 14px;
+
+            font-size: 36px;
+        }
+
+        .food-cta p {
+            max-width: 720px;
+
+            margin: 0 auto 25px;
+
+            color: #e4f2ec;
+
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+
+            padding: 13px 27px;
+
+            color: #023b2a;
+            background: white;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #edf8f3;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            padding: 45px 8% 25px;
+
+            color: white;
+            background: #023b2a;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+
+            gap: 35px;
+        }
+
+        .footer-brand {
+            max-width: 360px;
+        }
+
+        .footer-brand h3 {
+            margin: 0 0 12px;
+
+            font-size: 24px;
+        }
+
+        .footer-brand p {
+            margin: 0;
+
+            color: #d8e5df;
+
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            margin: 0 0 14px;
+
+            font-size: 17px;
+        }
+
+        .footer-links a {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #d8e5df;
+
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 35px;
+            padding-top: 20px;
+
+            color: #d8e5df;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media screen and (max-width: 1200px) {
+
+            .topnav {
+                flex-wrap: wrap;
+
+                padding: 12px 20px;
+            }
+
+            .nav-links {
+                width: 100%;
+
+                margin-left: 0;
+
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .food-hero {
+                height: 520px;
+            }
+
+            .hero-content {
+                top: 65%;
+            }
+
+        }
+
+
+        @media screen and (max-width: 1000px) {
+
+            .food-grid {
+                grid-template-columns:
+                    repeat(2, minmax(260px, 1fr));
+            }
+
+        }
+
+
+        @media screen and (max-width: 800px) {
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media screen and (max-width: 680px) {
+
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .food-description {
+                min-height: auto;
+            }
+
+        }
+
+
+        @media screen and (max-width: 650px) {
+
+            .topnav {
+                gap: 12px;
+            }
+
+            .search-box {
+                order: 3;
+
+                width: 100%;
+            }
+
+            .food-hero {
+                height: 570px;
+            }
+
+            .hero-content {
+                top: 72%;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .food-introduction,
+            .famous-food,
+            .food-tips {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HERO AND NAVIGATION
+    ========================== -->
+
+    <div class="food-hero">
+
+        <img src="food_banner.jpg"
+             alt="Penang local food">
+
+
+        <div class="topnav">
+
+
+            <a href="Discover Penang.html"
+               class="logo">
+
+                <img src="logo_white.png"
+                     alt="Discover Penang logo">
+
+                <span>Discover Penang</span>
+
+            </a>
+
+
+            <div class="search-box">
+
+                <span class="search-icon">⌕</span>
+
+                <input type="text"
+                       placeholder="Search Penang">
+
+            </div>
+
+
+            <div class="nav-links">
+
+                <a href="Discover Penang.html">
+                    Home
+                </a>
+
+                <a href="explore.html">
+                    Explore
+                </a>
+
+                <a href="attractions.html">
+                    Attractions
+                </a>
+
+                <a href="food.html"
+                   class="active">
+                    Food
+                </a>
+
+                <a href="hotels.html">
+                    Hotels
+                </a>
+
+                <a href="transportation.html">
+                    Transportation
+                </a>
+
+                <a href="events.html">
+                    Events
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="feedback.html">
+                    Feedback
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-content">
+
+            <h1>Taste Penang</h1>
+
+            <p>
+                Discover Penang's famous street food,
+                traditional local dishes and refreshing desserts.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         INTRODUCTION
+    ========================== -->
+
+    <section class="food-introduction">
+
+        <h2 class="section-title">
+            Famous Penang Food
+        </h2>
+
+        <p class="section-description">
+            Penang is known for its rich food culture,
+            combining Malay, Chinese and Indian flavours.
+            Explore traditional dishes loved by locals and visitors.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOD CARDS
+    ========================== -->
+
+    <section class="famous-food">
+
+        <div class="food-grid">
+
+
+            <!-- Char Kway Teow -->
+
+            <article class="food-card">
+
+                <div class="food-image">
+
+                    <img src="charkwayteow.jpg"
+                         alt="Char Kway Teow">
+
+                    <span class="food-category">
+                        Noodles
+                    </span>
+
+                </div>
+
+                <div class="food-content">
+
+                    <h3>Char Kway Teow</h3>
+
+                    <div class="food-rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.9
+                        </span>
+
+                    </div>
+
+                    <p class="food-description">
+                        Flat rice noodles stir-fried with prawns,
+                        egg, bean sprouts, Chinese sausage
+                        and a rich smoky flavour.
+                    </p>
+
+                    <div class="food-info">
+
+                        <span class="food-price">
+                            RM8 – RM15
+                        </span>
+
+                        <span class="food-type">
+                            Street Food
+                        </span>
+
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=Char+Kway+Teow+Penang"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="map-button">
+
+                        📍 View on Google Maps
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Assam Laksa -->
+
+            <article class="food-card">
+
+                <div class="food-image">
+
+                    <img src="assamlaksa.jpg"
+                         alt="Assam Laksa">
+
+                    <span class="food-category">
+                        Noodles
+                    </span>
+
+                </div>
+
+                <div class="food-content">
+
+                    <h3>Assam Laksa</h3>
+
+                    <div class="food-rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.8
+                        </span>
+
+                    </div>
+
+                    <p class="food-description">
+                        Rice noodles served in a tangy and spicy
+                        fish-based broth with herbs,
+                        pineapple and fresh vegetables.
+                    </p>
+
+                    <div class="food-info">
+
+                        <span class="food-price">
+                            RM7 – RM12
+                        </span>
+
+                        <span class="food-type">
+                            Local Favourite
+                        </span>
+
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=Assam+Laksa+Penang"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="map-button">
+
+                        📍 View on Google Maps
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Cendol -->
+
+            <article class="food-card">
+
+                <div class="food-image">
+
+                    <img src="cendol.jpg"
+                         alt="Penang Cendol">
+
+                    <span class="food-category">
+                        Dessert
+                    </span>
+
+                </div>
+
+                <div class="food-content">
+
+                    <h3>Penang Cendol</h3>
+
+                    <div class="food-rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.8
+                        </span>
+
+                    </div>
+
+                    <p class="food-description">
+                        A refreshing dessert with shaved ice,
+                        coconut milk, palm sugar,
+                        green rice-flour jelly and red beans.
+                    </p>
+
+                    <div class="food-info">
+
+                        <span class="food-price">
+                            RM4 – RM8
+                        </span>
+
+                        <span class="food-type">
+                            Dessert
+                        </span>
+
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=Penang+Road+Famous+Teochew+Chendul"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="map-button">
+
+                        📍 View on Google Maps
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Nasi Kandar -->
+
+            <article class="food-card">
+
+                <div class="food-image">
+
+                    <img src="nasikandar.jpg"
+                         alt="Nasi Kandar">
+
+                    <span class="food-category">
+                        Rice
+                    </span>
+
+                </div>
+
+                <div class="food-content">
+
+                    <h3>Nasi Kandar</h3>
+
+                    <div class="food-rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.7
+                        </span>
+
+                    </div>
+
+                    <p class="food-description">
+                        Steamed rice served with different curries,
+                        meat, seafood and vegetables,
+                        covered with flavourful mixed gravy.
+                    </p>
+
+                    <div class="food-info">
+
+                        <span class="food-price">
+                            RM10 – RM25
+                        </span>
+
+                        <span class="food-type">
+                            Rice Dish
+                        </span>
+
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=Nasi+Kandar+Penang"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="map-button">
+
+                        📍 View on Google Maps
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Hokkien Mee -->
+
+            <article class="food-card">
+
+                <div class="food-image">
+
+                    <img src="hokkienmee.jpg"
+                         alt="Penang Hokkien Mee">
+
+                    <span class="food-category">
+                        Noodles
+                    </span>
+
+                </div>
+
+                <div class="food-content">
+
+                    <h3>Hokkien Mee</h3>
+
+                    <div class="food-rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.7
+                        </span>
+
+                    </div>
+
+                    <p class="food-description">
+                        Noodles served in a rich prawn broth
+                        with prawns, sliced pork,
+                        boiled egg and vegetables.
+                    </p>
+
+                    <div class="food-info">
+
+                        <span class="food-price">
+                            RM7 – RM13
+                        </span>
+
+                        <span class="food-type">
+                            Noodle Soup
+                        </span>
+
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=Hokkien+Mee+Penang"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="map-button">
+
+                        📍 View on Google Maps
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Pasembur -->
+
+            <article class="food-card">
+
+                <div class="food-image">
+
+                    <img src="pasembur.jpg"
+                         alt="Penang Pasembur">
+
+                    <span class="food-category">
+                        Snack
+                    </span>
+
+                </div>
+
+                <div class="food-content">
+
+                    <h3>Pasembur</h3>
+
+                    <div class="food-rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.6
+                        </span>
+
+                    </div>
+
+                    <p class="food-description">
+                        A colourful local salad with cucumber,
+                        potatoes, tofu and fritters,
+                        served with sweet and spicy sauce.
+                    </p>
+
+                    <div class="food-info">
+
+                        <span class="food-price">
+                            RM8 – RM20
+                        </span>
+
+                        <span class="food-type">
+                            Local Snack
+                        </span>
+
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=Pasembur+Penang"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="map-button">
+
+                        📍 View on Google Maps
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOD TIPS
+    ========================== -->
+
+    <section class="food-tips">
+
+        <h2 class="section-title">
+            Penang Food Tips
+        </h2>
+
+        <p class="section-description">
+            Follow these simple tips to enjoy
+            Penang's local food experience.
+        </p>
+
+
+        <div class="tips-grid">
+
+
+            <div class="tip-card">
+
+                <div class="tip-icon">
+                    🕐
+                </div>
+
+                <h3>Check Opening Hours</h3>
+
+                <p>
+                    Some hawker stalls only operate
+                    during breakfast, lunch or evening hours.
+                </p>
+
+            </div>
+
+
+            <div class="tip-card">
+
+                <div class="tip-icon">
+                    💵
+                </div>
+
+                <h3>Prepare Cash</h3>
+
+                <p>
+                    Some traditional food stalls
+                    may only accept cash payments.
+                </p>
+
+            </div>
+
+
+            <div class="tip-card">
+
+                <div class="tip-icon">
+                    🌶️
+                </div>
+
+                <h3>Ask About Spice</h3>
+
+                <p>
+                    Tell the vendor when you prefer
+                    less chilli or a milder flavour.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CALL TO ACTION
+    ========================== -->
+
+    <section class="food-cta">
+
+        <h2>
+            Ready to Taste Penang?
+        </h2>
+
+        <p>
+            Visit local hawker centres and traditional eateries
+            to discover the flavours that make Penang famous.
+        </p>
+
+        <a href="transportation.html"
+           class="cta-button">
+            Plan Your Journey
+        </a>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+
+            <div class="footer-brand">
+
+                <h3>
+                    Discover Penang
+                </h3>
+
+                <p>
+                    Explore Penang's culture, attractions,
+                    local cuisine and unforgettable travel experiences.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Explore</h4>
+
+                <a href="Discover Penang.html">
+                    Home
+                </a>
+
+                <a href="explore.html">
+                    Explore
+                </a>
+
+                <a href="attractions.html">
+                    Attractions
+                </a>
+
+                <a href="food.html">
+                    Food
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Travel</h4>
+
+                <a href="hotels.html">
+                    Hotels
+                </a>
+
+                <a href="transportation.html">
+                    Transportation
+                </a>
+
+                <a href="events.html">
+                    Events
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Support</h4>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="feedback.html">
+                    Feedback
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            © 2026 Discover Penang. All rights reserved.
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
